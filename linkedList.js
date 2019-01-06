@@ -33,18 +33,15 @@ function linkedListGenerator() {
   function remove(index) {
     if (!get(index)) {
       return false;
-    } else if (!get(index - 1)) {
-      // could put get(index) === head?
+    } else if (index === 0) {
       head = get(index + 1);
-    } else if (!get(index + 1)) {
-      // also get(index) === tail
+    } else if (get(index) === tail) {
       tail = get(index - 1);
       tail.next = null;
     } else {
       get(index - 1).next = get(index + 1);
     }
   }
-  // didnt want to change code to the comments above in case there was a node with the same value as head or tail?
 
   function get(index) {
     let currentNode = head;
@@ -66,9 +63,11 @@ function linkedListGenerator() {
       value: value,
       next: null
     };
-    if (!get(index)) {
+    if (get(index - 1) === tail) {
+      add(newNode);
+    } else if (!get(index)) {
       return false;
-    } else if (!get(index - 1)) {
+    } else if (index === 0) {
       newNode.next = head;
       head = newNode;
     } else {
