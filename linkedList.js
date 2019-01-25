@@ -20,6 +20,7 @@ function linkedListGenerator() {
       value: value,
       next: null
     };
+
     if (!head) {
       head = newNode;
       tail = newNode;
@@ -45,6 +46,7 @@ function linkedListGenerator() {
 
   function get(index) {
     let currentNode = head;
+
     if (index < 0) {
       return false;
     }
@@ -63,6 +65,7 @@ function linkedListGenerator() {
       value: value,
       next: null
     };
+
     if (get(index - 1) === tail) {
       add(newNode);
     } else if (!get(index)) {
